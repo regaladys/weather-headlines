@@ -1,11 +1,23 @@
+import fileinput
 
+tag = "p"
+delete_empties = True
+
+body = ""
+
+for line in fileinput.input():
+    line = line.strip()
+    if delete_empties is True and line == "":
+        continue
+    body += f"\n    <{tag}>{line}</{tag}>"
+
+html = f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading the Weather</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Untitled</title>
     <style>
 
     </style>
@@ -40,55 +52,9 @@
     <a href="x.html">X</a>
     <a href="y.html">Y</a>
     <a href="z.html">Z</a>
-    
-    <p>Babuyan</p>
-    <p>back</p>
-    <p>badly</p>
-    <p>bagyo</p>
-    <p>bakit</p>
-    <p>band</p>
-    <p>bans</p>
-    <p>barangays</p>
-    <p>barely</p>
-    <p>batter</p>
-    <p>battered</p>
-    <p>batters</p>
-    <p>become</p>
-    <p>becomes</p>
-    <p>becoming</p>
-    <p>beg</p>
-    <p>begin</p>
-    <p>begins</p>
-    <p>begs</p>
-    <p>bemoans</p>
-    <p>benefit</p>
-    <p>best</p>
-    <p>better</p>
-    <p>bill</p>
-    <p>biodiversity</p>
-    <p>birthday</p>
-    <p>blankets</p>
-    <p>blocks</p>
-    <p>blue</p>
-    <p>boat</p>
-    <p>boboproof</p>
-    <p>bodies</p>
-    <p>boundaries</p>
-    <p>boycott</p>
-    <p>brace</p>
-    <p>braces</p>
-    <p>bracing</p>
-    <p>branch</p>
-    <p>break</p>
-    <p>brew</p>
-    <p>brief</p>
-    <p>briefing</p>
-    <p>bring</p>
-    <p>bringing</p>
-    <p>brings</p>
-    <p>broken</p>
-    <p>Bulacan</p>
-    <p>businesses</p>
+    {body}
 </body>
 </html>
+"""
 
+print(html)
